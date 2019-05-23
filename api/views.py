@@ -31,3 +31,7 @@ def pessoaUpdate(request, id):
             serializer.save()
             return JsonResponse(serializer.data)
         return JsonResponse(serializer.erros, status = status.HTTP_400_BAD_REQUEST)
+
+    if(request.method == 'DELETE'):
+        queryset.delete()
+        return HttpResponse(status=204)
