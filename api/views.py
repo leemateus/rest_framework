@@ -17,21 +17,25 @@ class EnderecoView(viewsets.ModelViewSet):
     serializer_class = EnderecoSerializer
 
 # @api_view(['PUT', 'GET', 'DELETE'])
-@csrf_exempt
-def pessoaUpdate(request, id):
-    try:
-        queryset = Pessoa.objects.get(id = id)
-    except e:
-        return Response(status = status.HTTP_404_NOT_DOUND)
-
-    if(request.method == 'PUT'):
-        data = JSONParser().parse(request)
-        serializer = PessoaSerializer(queryset, data = data, context = {'request': request})
-        if(serializer.is_valid()):
-            serializer.save()
-            return JsonResponse(serializer.data)
-        return JsonResponse(serializer.erros, status = status.HTTP_400_BAD_REQUEST)
-
-    if(request.method == 'DELETE'):
-        queryset.delete()
-        return HttpResponse(status=204)
+# @csrf_exempt
+# def pessoaUpdate(request, id):
+#     try:
+#         queryset = Pessoa.objects.get(id = id)
+#     except e:
+#         return Response(status = status.HTTP_404_NOT_DOUND)
+#
+#     if(request.method == 'PUT'):
+#         data = JSONParser().parse(request)
+#         serializer = PessoaSerializer(queryset, data = data, context = {'request': request})
+#         if(serializer.is_valid()):
+#             serializer.save()
+#             return JsonResponse(serializer.data)
+#         return JsonResponse(serializer.erros, status = status.HTTP_400_BAD_REQUEST)
+#
+#     if(request.method == 'DELETE'):
+#         queryset.delete()
+#         return HttpResponse(status=204)
+#
+#     if(request.method == 'GET'):
+#         serializer = PessoaSerializer(queryset, context = {'request' : request})
+#         return JsonResponse(serializer.data, context = {'request' : request})

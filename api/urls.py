@@ -7,12 +7,11 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register('pessoas', PessoaView)
 router.register('enderecos', EnderecoView)
-# router.register('pessoaupdate/<id>', PessoaView)
 
 
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
-    path('pessoaupdate/<int:id>', views.pessoaUpdate),
+    # path('pessoaupdate/<int:id>', views.pessoaUpdate),
 
 ]
